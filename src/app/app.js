@@ -1,11 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import ngMaterial from 'angular-material';
+import Common from './common';
 import AppComponent from './app.component';
 
 angular.module('app', [
     uiRouter,
-    ngMaterial,
+    Common
   ])
   .config(($locationProvider) => {
     "ngInject";
