@@ -1,6 +1,113 @@
 <navbar></navbar>
-<main>
-  <div>
-    <h1>Found in {{ $ctrl.name }}.html</h1>
+<md-content flex layout-padding layout="column">
+  <div flex>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Search</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <div layout="row" layout-xs="column">
+
+          <md-input-container>
+            <label>Title</label>
+            <input ng-model="$ctrl.query.s">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Year</label>
+            <input ng-model="$ctrl.query.y">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Type</label>
+            <md-select ng-model="$ctrl.query.type">
+              <md-option value="movie">
+                Movie
+              </md-option>
+              <md-option value="series">
+                Series
+              </md-option>
+              <md-option value="episode">
+                Episode
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <md-button
+              class="md-raised md-primary"
+              ng-click="$ctrl.search($event)"
+              ng-disabled="$ctrl.query.s === '' || $ctrl.isLoading"
+            >
+              Search
+            </md-button>
+          </md-input-container>
+        </div>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Results</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <div ng-if="$ctrl.resultCnt === 0">
+          <p>
+            There are no results.
+          </p>
+        </div>
+        <div ng-if="$ctrl.resultCnt !== 0">
+          <p>There're <b>{{ $ctrl.resultCnt }}</b> matching results.</p>
+          <md-card ng-repeat="item in $ctrl.results">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{ item.Title}}</span>
+                <span class="md-subhead">Year: {{ item.Year }}</span>
+              </md-card-title-text>
+              <md-card-title-media>
+                <div class="md-media-lg card-media">
+                  <img ng-src="{{item.Poster}}" alt="{{ item.Title }}" class="img-poster" />
+                </div>
+              </md-card-title-media>
+            </md-card-title>
+          </md-card>
+          <div flex>
+            <md-button
+              class="md-primary md-raised"
+              ng-click="$ctrl.search($event)"
+              ng-disabled="$ctrl.query.page === 1"
+            >
+              First
+            </md-button>
+            <md-button
+              class="md-primary md-raised"
+              ng-click="$ctrl.search($event, $ctrl.query.page - 1)"
+              ng-disabled="$ctrl.query.page === 1"
+            >
+              Prev
+            </md-button>
+            <span>
+              Page No: <b>{{ $ctrl.query.page }}</b>
+            </span>
+            <md-button
+              class="md-primary md-raised"
+              ng-click="$ctrl.search($event, $ctrl.query.page + 1)"
+              ng-disabled="$ctrl.query.page === $ctrl.totalPage()"
+            >
+              Next
+            </md-button>
+            <md-button
+              class="md-primary md-raised"
+              ng-click="$ctrl.search($event, $ctrl.totalPage())"
+              ng-disabled="$ctrl.query.page === $ctrl.totalPage()"
+            >
+              Last
+            </md-button>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
   </div>
-</main>
+</md-content>
