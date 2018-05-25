@@ -40,7 +40,7 @@
               ng-click="$ctrl.search($event)"
               ng-disabled="$ctrl.query.s === '' || $ctrl.isLoading"
             >
-              Search
+              {{ $ctrl.isLoading ? "Searching..." : "Search" }}
             </md-button>
           </md-input-container>
         </div>
