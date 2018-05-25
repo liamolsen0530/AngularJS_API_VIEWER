@@ -1,13 +1,16 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import { AppConstants } from './constants';
 import Common from './common';
 import Components from './components';
+import serviceModule from './service';
 import AppComponent from './app.component';
 
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    serviceModule
   ])
   .config(($locationProvider) => {
     "ngInject";
@@ -15,5 +18,5 @@ angular.module('app', [
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-
+  .constant('AppConstants', AppConstants)
   .component('app', AppComponent);
