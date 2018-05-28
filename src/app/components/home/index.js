@@ -14,6 +14,10 @@ let homeModule = angular.module('home', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
+    .state('search', {
+      url: '/search/:search',
+      component: 'home'
+    })
     .state('home', {
       url: '/home',
       component: 'home'

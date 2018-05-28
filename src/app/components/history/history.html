@@ -1,0 +1,57 @@
+<navbar></navbar>
+<md-content flex layout-padding layout="column">
+  <div flex>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Bookmarked Search Terms</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <div ng-if="$ctrl.bookmark.length === 0">
+          <p>
+            There are no bookmarked items.
+          </p>
+        </div>
+        <div ng-if="$ctrl.bookmark.length !== 0">
+          <md-card ng-repeat="item in $ctrl.bookmark">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{ item }}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions>
+              <md-button ui-sref="search({search: item})">Show Detail</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Search History</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <div ng-if="$ctrl.history.length === 0">
+          <p>
+            There are no search history.
+          </p>
+        </div>
+        <div ng-if="$ctrl.history.length !== 0">
+          <md-card ng-repeat="item in $ctrl.history">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{ item }}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions>
+              <md-button ui-sref="search({search: item})">Show Detail</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>

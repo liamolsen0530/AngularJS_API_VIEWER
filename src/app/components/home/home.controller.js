@@ -1,16 +1,16 @@
 class HomeController {
-  constructor(LiquorService, LocalStorageService, $mdDialog) {
+  constructor(LiquorService, $stateParams, LocalStorageService, $mdDialog) {
     this.name = 'home';
     this.LiquorService = LiquorService;
     this.LocalStorageService = LocalStorageService;
     this.mdDialog = $mdDialog;
 
     this.query = {
-      q: '*:*',
+      q: $stateParams.search || '*:*',
       rows: 10,
       page: 1,
     };
-
+    
     this.resultCnt = 0;
     this.results = [];
     this.isLoading = false;
