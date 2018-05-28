@@ -9,7 +9,6 @@
       </md-card-title>
       <md-card-content>
         <div layout="row" layout-xs="column">
-
           <md-input-container>
             <label>Query</label>
             <input ng-model="$ctrl.query.q">
@@ -42,6 +41,13 @@
             </md-button>
           </md-input-container>
         </div>
+
+        <div layout="row">
+          <span class="helpText">Bookmark Current Search Term</span>
+          <md-button class="md-icon-button md-accent" aria-label="Bookmark" ng-click="$ctrl.toggleBookmark()">
+            <md-icon>{{ $ctrl.isBookmarked() ? "favorite" : "favorite_border"}}</md-icon>
+          </md-button>
+        </div>
       </md-card-content>
     </md-card>
     <md-card>
@@ -66,13 +72,13 @@
               </md-card-title-text>
             </md-card-title>
             <md-card-actions>
-              <md-button>Show Detail</md-button>
+              <md-button ui-sref="detail({id: item._lw_parser_record_number_l})">Show Detail</md-button>
             </md-card-actions>
           </md-card>
           <div flex>
             <md-button
               class="md-primary md-raised"
-              ng-click="$ctrl.search($event)"
+              ng-click="$ctrl.search($event, 1)"
               ng-disabled="$ctrl.query.page === 1"
             >
               First

@@ -1,7 +1,8 @@
 class HomeController {
-  constructor(LiquorService, $mdDialog) {
+  constructor(LiquorService, LocalStorageService, $mdDialog) {
     this.name = 'home';
     this.LiquorService = LiquorService;
+    this.LocalStorageService = LocalStorageService;
     this.mdDialog = $mdDialog;
 
     this.query = {
@@ -16,8 +17,13 @@ class HomeController {
     this.error = {};
   }
 
-  search (ev, page = 1) {
-    this.query.page = page;
+  search (ev, page = false) {
+    if ( page === false ) {
+      this.query.page = 1;
+      this.LocalStorageService.addHistory(this.query.q);
+    } else {
+      this.query.page = page;
+    }
     this.isLoading = true;
     this.LiquorService.queryItem(this.query).then(
       (res) => {
@@ -48,6 +54,14 @@ class HomeController {
 
   totalPage() {
     return Math.ceil(this.resultCnt / this.query.size);
+  }
+
+  isBookmarked () {
+    return this.LocalStorageService.isBookmark(this.query.q);
+  }
+
+  toggleBookmark() {
+    this.LocalStorageService.toggleBookmark(this.query.q);
   }
 
 }

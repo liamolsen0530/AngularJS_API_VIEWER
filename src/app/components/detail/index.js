@@ -1,9 +1,9 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
-import homeComponent from './home.component';
+import detailComponent from './detail.component';
 
-let homeModule = angular.module('home', [
+let detailModule = angular.module('detail', [
   uiRouter,
   ngMaterial
 ])
@@ -14,14 +14,14 @@ let homeModule = angular.module('home', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('home', {
-      url: '/home',
-      component: 'home'
+    .state('detail', {
+      url: '/detail/:id',
+      component: 'detail'
     });
 })
 
-.component('home', homeComponent)
+.component('detail', detailComponent)
   
 .name;
 
-export default homeModule;
+export default detailModule;

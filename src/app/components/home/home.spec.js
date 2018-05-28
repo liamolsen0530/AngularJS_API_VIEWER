@@ -16,7 +16,7 @@ describe('Home', () => {
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
     it('Home component should be visible when navigates to /', () => {
-      $location.url('/');
+      $location.url('/home');
       $rootScope.$digest();
       expect($state.current.component).toBe('home');
     });
@@ -28,7 +28,8 @@ describe('Home', () => {
     beforeEach(() => {
       controller = $componentController('home', {
         $scope: $rootScope.$new(),
-        OMDBService: {},
+        LiquorService: {},
+        LocalStorageService: {},
         mdDialog: {}
       });
     });

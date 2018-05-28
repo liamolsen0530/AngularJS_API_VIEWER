@@ -14,11 +14,12 @@ angular.module('app', [
     serviceModule,
     LocalStorageModule
   ])
-  .config(($locationProvider, localStorageServiceProvider) => {
+  .config(($locationProvider, $urlRouterProvider, localStorageServiceProvider) => {
     "ngInject";
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
+    $urlRouterProvider.otherwise('home');
     localStorageServiceProvider.setPrefix(AppConstants.LOCAL_STORAGE_PREFIX);
   })
   .constant('AppConstants', AppConstants)

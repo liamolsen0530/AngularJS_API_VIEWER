@@ -4,6 +4,10 @@ const AppConstants = {
     apiKey: '98270d06',
   },
   LOCAL_STORAGE_PREFIX: 'lucid_test',
+  LOCAL_STORAGE_KEY: {
+    HISTORY: 'history',
+    BOOKMARK: 'bookmark',
+  },
   fushionDetail: {
     fushionUrl: 'http://localhost:8764/api/apps/LucidAdvanceTest/query/LucidAdvanceTest',
     basicDetail: 'Item_Description_s,Store_Name_s',

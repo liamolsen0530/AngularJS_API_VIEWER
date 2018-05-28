@@ -1,0 +1,27 @@
+<navbar></navbar>
+<md-content flex layout-padding layout="column">
+  <div flex>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Liquor Details (ID: {{$ctrl.detailId}})</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <div ng-if="!ctrl.isLoading">
+          <div ng-if="$ctrl.error">
+            <p>
+              There is error with the request.
+            </p>
+          </div>
+          <div ng-if="!$ctrl.error">
+            <p ng-repeat="item in $ctrl.displayField">
+              <span>{{ item }}:</span>
+              <span><b>{{ $ctrl.data[item] }}</b></span>
+            </p>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
