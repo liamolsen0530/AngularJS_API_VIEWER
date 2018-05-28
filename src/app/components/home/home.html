@@ -4,33 +4,31 @@
     <md-card>
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline">Movie Search</span>
+          <span class="md-headline">Liquor Store Search</span>
         </md-card-title-text>
       </md-card-title>
       <md-card-content>
         <div layout="row" layout-xs="column">
 
           <md-input-container>
-            <label>Title</label>
-            <input ng-model="$ctrl.query.s">
+            <label>Query</label>
+            <input ng-model="$ctrl.query.q">
           </md-input-container>
 
           <md-input-container>
-            <label>Year</label>
-            <input ng-model="$ctrl.query.y">
-          </md-input-container>
-
-          <md-input-container>
-            <label>Type</label>
-            <md-select ng-model="$ctrl.query.type">
-              <md-option value="movie">
-                Movie
+            <label>Page Size</label>
+            <md-select ng-model="$ctrl.query.rows">
+              <md-option value="5">
+                5
               </md-option>
-              <md-option value="series">
-                Series
+              <md-option value="10">
+                10
               </md-option>
-              <md-option value="episode">
-                Episode
+              <md-option value="20">
+                20
+              </md-option>
+              <md-option value="50">
+                50
               </md-option>
             </md-select>
           </md-input-container>
@@ -38,7 +36,7 @@
             <md-button
               class="md-raised md-primary"
               ng-click="$ctrl.search($event)"
-              ng-disabled="$ctrl.query.s === '' || $ctrl.isLoading"
+              ng-disabled="$ctrl.query.q === '' || $ctrl.isLoading"
             >
               {{ $ctrl.isLoading ? "Searching..." : "Search" }}
             </md-button>
@@ -63,15 +61,13 @@
           <md-card ng-repeat="item in $ctrl.results">
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">{{ item.Title}}</span>
-                <span class="md-subhead">Year: {{ item.Year }}</span>
+                <span class="md-headline">{{ item.Item_Description_s }}</span>
+                <span class="md-subhead">{{ item.Store_Name_s }}</span>
               </md-card-title-text>
-              <md-card-title-media>
-                <div class="md-media-lg card-media">
-                  <img ng-src="{{item.Poster}}" alt="{{ item.Title }}" class="img-poster" />
-                </div>
-              </md-card-title-media>
             </md-card-title>
+            <md-card-actions>
+              <md-button>Show Detail</md-button>
+            </md-card-actions>
           </md-card>
           <div flex>
             <md-button

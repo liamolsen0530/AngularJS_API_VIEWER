@@ -10,8 +10,8 @@ export default class OMDBService {
   }
 
   getItems(query) {
-    const apiUrl = this._AppConstants.apiUrl;
-    const apiKey = this._AppConstants.apiKey;
+    const apiUrl = this._AppConstants.omdbDetail.apiUrl;
+    const apiKey = this._AppConstants.omdbDetail.apiKey;
 
     const params = Object.assign({apiKey}, query);
 
