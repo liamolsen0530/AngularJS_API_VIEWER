@@ -1,6 +1,6 @@
-class HomeController {
+class OmdbController {
   constructor(OMDBService, $mdDialog) {
-    this.name = 'home';
+    this.name = 'omdb';
     this.OMDBService = OMDBService;
     this.mdDialog = $mdDialog;
 
@@ -61,4 +61,4 @@ class HomeController {
 
 }
 
-export default HomeController;
+export default OmdbController;

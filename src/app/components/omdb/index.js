@@ -1,9 +1,9 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
-import homeComponent from './home.component';
+import omdbComponent from './omdb.component';
 
-let homeModule = angular.module('home', [
+let omdbModule = angular.module('omdb', [
   uiRouter,
   ngMaterial
 ])
@@ -14,14 +14,14 @@ let homeModule = angular.module('home', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('home', {
-      url: '/',
-      component: 'home'
+    .state('omdb', {
+      url: '/omdb',
+      component: 'omdb'
     });
 })
 
-.component('home', homeComponent)
+.component('omdb', omdbComponent)
   
 .name;
 
-export default homeModule;
+export default omdbModule;

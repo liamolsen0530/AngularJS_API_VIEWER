@@ -1,9 +1,9 @@
-import HomeModule from './index'
+import OmdbModule from './index'
 
-describe('Home', () => {
+describe('Omdb', () => {
   let $rootScope, $state, $location, $componentController, $compile;
 
-  beforeEach(window.module(HomeModule));
+  beforeEach(window.module(OmdbModule));
 
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
@@ -15,10 +15,10 @@ describe('Home', () => {
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
-    it('Home component should be visible when navigates to /', () => {
-      $location.url('/');
+    it('Omdb component should be visible when navigates to /', () => {
+      $location.url('/omdb');
       $rootScope.$digest();
-      expect($state.current.component).toBe('home');
+      expect($state.current.component).toBe('omdb');
     });
   });
 
@@ -26,7 +26,7 @@ describe('Home', () => {
     // controller specs
     let controller;
     beforeEach(() => {
-      controller = $componentController('home', {
+      controller = $componentController('omdb', {
         $scope: $rootScope.$new(),
         OMDBService: {},
         mdDialog: {}
